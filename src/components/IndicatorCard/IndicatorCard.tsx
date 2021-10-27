@@ -5,8 +5,10 @@ import {
   } from '../QuickD3Chart';
 import { QuickD3ChartData } from '../QuickD3Chart/types';
 import { BAR_COLOR } from '../../constants/style';
+import classnames from 'classnames'
 
 type Props = {
+    isFeatured?: boolean;
     topic: string;
     indicatorName: string;
     indicatorVal: number;
@@ -17,6 +19,7 @@ type Props = {
 };
 
 const IndicatorCard: React.FC<Props> = ({
+    isFeatured=false,
     topic,
     indicatorName,
     indicatorVal,
@@ -25,6 +28,13 @@ const IndicatorCard: React.FC<Props> = ({
     source,
     link,
 }: Props) => {
+
+    const classNamesContatiner = classnames("text-custom-primary w-full md:w-1/2 px-2 mb-6", {
+        "lg:w-1/3": !isFeatured,
+        "md:px-4": !isFeatured,
+        "lg:w-1/2": isFeatured,
+        "md:px-6": isFeatured
+    })
 
     const getChartData = ()=>{
         const data4BarChart: QuickD3ChartData = [];
@@ -42,9 +52,9 @@ const IndicatorCard: React.FC<Props> = ({
     }
 
     return (
-        <div className="text-custom-primary w-full md:w-1/2 lg:w-1/3 px-2 lg:px-4 mb-6">
+        <div className={classNamesContatiner}>
             <div className="border-b border-custom-primary border-opacity-30 pb-4 mb-3">
-                <span className="text-5xl font-light">{topic}</span>
+                <span className="text-4xl font-light">{topic}</span>
             </div>
 
             <div className="flex mb-2">
@@ -79,7 +89,7 @@ const IndicatorCard: React.FC<Props> = ({
                             barColor={BAR_COLOR}
                             data4Bars={getChartData()}
                             showAxis={false}
-                            label4BarData={'num of jobs'}
+                            label4BarData={'value'}
                         />
                     </div>
                 </div>
