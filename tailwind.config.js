@@ -9,10 +9,13 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-      textColor: theme=>({
+    colors: {
+      ...defaultTheme.colors,
+      custom: {
         'primary': '#45687b'
-      }),
+      }
+    },
+    extend: {
       maxWidth: {
         'hub-container': '1124px',
         'indicator-name': '12rem'

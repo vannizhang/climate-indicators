@@ -19,15 +19,15 @@ const IndicatorCard: React.FC<Props> = ({
     link,
 }: Props) => {
     return (
-        <div className="text-primary">
-            <div className="border-b border-gray-200 pb-4 mb-3">
+        <div className="text-custom-primary w-full md:w-1/2 lg:w-1/3 px-2 lg:px-4 mb-6">
+            <div className="border-b border-custom-primary border-opacity-30 pb-4 mb-3">
                 <span className="text-5xl font-light">{topic}</span>
             </div>
 
-            <div className="flex">
+            <div className="flex mb-2">
                 <div>
                     <div>
-                        <span className="text-4xl font-light">
+                        <span className="text-4xl font-noraml">
                             {numberWithCommas(indicatorVal)}
                         </span>
                     </div>
@@ -38,11 +38,12 @@ const IndicatorCard: React.FC<Props> = ({
                         </span>
                     </div>
                 </div>
-                <div></div>
+
+                <div className="flex-grow ml-1 h-24 bg-black">chart</div>
             </div>
 
             <div className="text-gray-400">
-                <span>source: {source}</span>
+                <span className="text-sm">source: {source}</span>
             </div>
         </div>
     );
