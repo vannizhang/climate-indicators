@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   purge: {
     content: [ 
@@ -7,7 +9,15 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      textColor: theme=>({
+        'primary': '#45687b'
+      }),
+      maxWidth: {
+        'hub-container': '1124px',
+        'indicator-name': '12rem'
+      },
+    }
   },
   variants: {
     extend: {},
