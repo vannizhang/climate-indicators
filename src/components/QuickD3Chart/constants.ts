@@ -18,7 +18,7 @@ export const REF_LINE_STROKE = .5;
 
 export const TOOLTIP_BACKGROUND_COLOR = 'rgba(0,0,0,.8)';
 export const TOOLTIP_TEXT_COLOR = '#fff';
-export const TOOLTIP_BOXSHADOW_COLOR = 'rgba(0,0,0,.25)';
+export const TOOLTIP_BOXSHADOW_COLOR = 'rgba(0,0,0,0)';
 export const TOOLTIP_PADDING = '.25rem';
 
 export const AXIS_TEXT_COLOR = 'rgba(0,0,0,.7)';

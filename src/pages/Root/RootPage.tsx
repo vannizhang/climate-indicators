@@ -3,7 +3,7 @@ import { CardGroup } from '../../components';
 
 const RootPage = () => {
     return (
-        <div className="md:absolute md:top-0 md:bottom-0 md:left-0 md:right-0 flex justify-center items-center">
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center">
             <CardGroup />
         </div>
     );
