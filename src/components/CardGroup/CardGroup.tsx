@@ -9,6 +9,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
@@ -18,6 +19,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
@@ -27,6 +29,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
@@ -36,6 +39,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
@@ -45,6 +49,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
@@ -54,6 +59,7 @@ const CardGroup = () => {
                 indicatorName="agricultural jobs in impacted area"
                 indicatorVal={623576}
                 timeseriesData={[]}
+                timeseriesDataLabel={'30-Day Change'}
                 source="NIDIS/USDA Census of Agriculture"
                 link="esri.com"
             />
