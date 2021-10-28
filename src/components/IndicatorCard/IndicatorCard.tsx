@@ -3,22 +3,12 @@ import { numberWithCommas } from 'helper-toolkit-ts/dist/number';
 import {
     BarLineCombined
   } from '../QuickD3Chart';
-import { QuickD3ChartData } from '../QuickD3Chart/types';
+import { QuickD3ChartData, QuickD3ChartDataItem } from '../QuickD3Chart/types';
 import { BAR_COLOR } from '../../constants/style';
+import { IndicatorData } from '../../services/fetchIndicatorData';
 // import classnames from 'classnames'
 
-type Props = {
-    // isFeatured?: boolean;
-    topic: string;
-    indicatorName: string;
-    indicatorVal: number;
-    timeseriesData: number[];
-    timeseriesDataLabel?: string;
-    source: string;
-    link?: string;
-};
-
-const IndicatorCard: React.FC<Props> = ({
+const IndicatorCard: React.FC<IndicatorData> = ({
     // isFeatured=false,
     topic,
     indicatorName,
@@ -27,22 +17,17 @@ const IndicatorCard: React.FC<Props> = ({
     timeseriesDataLabel,
     source,
     link,
-}: Props) => {
+}: IndicatorData) => {
 
-    const getChartData = ()=>{
-        const data4BarChart: QuickD3ChartData = [];
+    const data4BarChart: QuickD3ChartData = timeseriesData.map((value, i)=>{
 
-        for(let i = 0; i < 30; i++){
-            const data = {
-                key: i.toString(),
-                value: Math.floor(Math.random() * 50) + 5
-            }
+        const data = {
+            key: i.toString(),
+            value
+        } as QuickD3ChartDataItem
 
-            data4BarChart.push(data)
-        }
-
-        return data4BarChart;
-    }
+        return data
+    })
 
     return (
         <div className='text-custom-primary w-full'>
@@ -80,7 +65,7 @@ const IndicatorCard: React.FC<Props> = ({
                         <BarLineCombined 
                             // timeFormatSpecifier='%b %d'
                             barColor={BAR_COLOR}
-                            data4Bars={getChartData()}
+                            data4Bars={data4BarChart}
                             showAxis={false}
                             label4BarData={'value'}
                         />

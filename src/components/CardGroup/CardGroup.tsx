@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IndicatorCard } from '..';
+import { AppContext } from '../../contexts/AppContextProvider';
 
 const CardGroup = () => {
+
+    const { indicatorData } = useContext(AppContext);
+
+    if(!indicatorData){
+        return <p>failed to load indicator data...</p>;
+    }
+
     return (
         <div 
             className='p-2'
@@ -9,7 +17,7 @@ const CardGroup = () => {
                 maxWidth: 600
             }}
         >
-            <IndicatorCard
+            {/* <IndicatorCard
                 topic="Extreme Heat"
                 indicatorName="people with at-risk condition"
                 indicatorVal={17011}
@@ -17,6 +25,16 @@ const CardGroup = () => {
                 timeseriesDataLabel={'30-Day Change'}
                 source="NOAA National Weather Service"
                 link="esri.com"
+            /> */}
+
+            <IndicatorCard
+                topic={indicatorData.topic}
+                indicatorName={indicatorData.indicatorName}
+                indicatorVal={indicatorData.indicatorVal}
+                timeseriesData={indicatorData.timeseriesData}
+                timeseriesDataLabel={indicatorData.timeseriesDataLabel}
+                source={indicatorData.source}
+                link={indicatorData.link}
             />
         </div>
     );
