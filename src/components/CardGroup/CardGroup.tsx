@@ -10,7 +10,7 @@ const CardGroup = () => {
             }}
         >
             <IndicatorCard
-                topic="Extrem Heat"
+                topic="Extreme Heat"
                 indicatorName="people with at-risk condition"
                 indicatorVal={17011}
                 timeseriesData={[]}
