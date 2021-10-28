@@ -23,7 +23,8 @@ const IndicatorCard: React.FC<IndicatorData> = ({
 
         const data = {
             key: i.toString(),
-            value
+            value,
+            label: `placeholder date ${i}`
         } as QuickD3ChartDataItem
 
         return data
@@ -67,7 +68,6 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                             barColor={BAR_COLOR}
                             data4Bars={data4BarChart}
                             showAxis={false}
-                            label4BarData={'value'}
                         />
                     </div>
                 </div>

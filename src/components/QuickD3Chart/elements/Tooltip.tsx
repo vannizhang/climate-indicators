@@ -19,7 +19,6 @@ type Props = {
     data4Bars?: QuickD3ChartData;
     data4Line?: QuickD3ChartData;
     margin?: Margin;
-    label4BarData?: string;
 };
 
 type TooltipPos = {
@@ -33,7 +32,6 @@ const Tooltip:React.FC<Props> = ({
     data4Bars,
     data4Line,
     margin = MARGIN,
-    label4BarData
 }) => {
 
     const tooltipRef = React.useRef<HTMLDivElement>();
@@ -97,7 +95,6 @@ const Tooltip:React.FC<Props> = ({
                 index4ItemOnHover={pointerPosition ? pointerPosition.index4ItemOnHover : -1}
                 barDataOnHover={pointerPosition && data4Bars ? data4Bars[pointerPosition.index4ItemOnHover] : undefined }
                 lineDataOnHover={pointerPosition && data4Line ? data4Line[pointerPosition.index4ItemOnHover] : undefined }
-                label4BarData={label4BarData}
             />
         </div>
     )

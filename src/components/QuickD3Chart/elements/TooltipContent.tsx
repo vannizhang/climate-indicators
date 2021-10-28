@@ -6,17 +6,16 @@ import {
     TOOLTIP_PADDING
 } from '../constants';
 import { QuickD3ChartDataItem } from '../types';
+import { numberWithCommas } from 'helper-toolkit-ts/dist/number'
 
 type Props = {
     index4ItemOnHover?: number;
-    label4BarData?: string;
     barDataOnHover?: QuickD3ChartDataItem;
     lineDataOnHover?: QuickD3ChartDataItem
 }
 
 const TooltipContent:React.FC<Props> = ({
     index4ItemOnHover,
-    label4BarData,
     barDataOnHover,
     lineDataOnHover
 }) => {
@@ -32,8 +31,8 @@ const TooltipContent:React.FC<Props> = ({
         >
             <div>
                 <span>
-                    { label4BarData ? label4BarData + ': ' : null}
-                    { barDataOnHover ? barDataOnHover.value : 'n/a' }
+                    { barDataOnHover && barDataOnHover.label ? barDataOnHover.label + ': ' : null}
+                    { barDataOnHover ? numberWithCommas(barDataOnHover.value) : 'n/a' }
                 </span>
             </div>
 

@@ -55,7 +55,6 @@ type Props = {
     numOfTicksOnXAxisToHide?: number;
     showAxis?:boolean;
     resizable?:boolean;
-    label4BarData?: string;
 }
 
 const BarLineCombined:React.FC<Props> = ({
@@ -69,8 +68,7 @@ const BarLineCombined:React.FC<Props> = ({
     // xScaleTickValues,
     numOfTicksOnXAxisToHide,
     showAxis=true,
-    resizable = true,
-    label4BarData
+    resizable = true
 }) => {
 
     const [ dimension, setDimension ] = useState<Dimension>({
@@ -238,7 +236,6 @@ const BarLineCombined:React.FC<Props> = ({
                 data4Bars={data4Bars}
                 data4Line={data4Line}
                 margin={margin}
-                label4BarData={label4BarData}
             />
         </div>
     )
