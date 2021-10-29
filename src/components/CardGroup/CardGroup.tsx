@@ -32,6 +32,7 @@ const CardGroup = () => {
                 indicatorName={indicatorData.indicatorName}
                 indicatorVal={indicatorData.indicatorVal}
                 timeseriesData={indicatorData.timeseriesData}
+                timeseriesDate={indicatorData.timeseriesDate}
                 timeseriesDataLabel={indicatorData.timeseriesDataLabel}
                 source={indicatorData.source}
                 link={indicatorData.link}

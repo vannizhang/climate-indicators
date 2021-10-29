@@ -13,6 +13,7 @@ export type IndicatorData = {
     indicatorName: string;
     indicatorVal: number;
     timeseriesData: number[];
+    timeseriesDate: string[];
     timeseriesDataLabel?: string;
     source: string;
     link?: string;
@@ -22,7 +23,7 @@ const hashData = parseHash();
 // item id of the feature layer
 const ItemId = hashData['id'] || null;
 
-type FieldName = 'Indicator_Name' | 'Indicator_Value' | 'Link' | 'Source' | 'Timeseries_Data' | 'Timeseries_Label' | 'Topic';
+type FieldName = 'Indicator_Name' | 'Indicator_Value' | 'Link' | 'Source' | 'Timeseries_Data' | 'Timeseries_Label' | 'Topic' | 'Timeseries_Date';
 
 export const fetchIndicatorData = async():Promise<IndicatorData>=>{
 
@@ -36,7 +37,7 @@ export const fetchIndicatorData = async():Promise<IndicatorData>=>{
         const url = item.url + '/0';
 
         const outFields:FieldName[] = [
-            'Indicator_Name', 'Indicator_Value', 'Link', 'Source', 'Timeseries_Data', 'Timeseries_Label', 'Topic'
+            'Indicator_Name', 'Indicator_Value', 'Link', 'Source', 'Timeseries_Data', 'Timeseries_Label', 'Timeseries_Date', 'Topic'
         ]
 
         const res = await queryFeatures({
@@ -57,11 +58,16 @@ export const fetchIndicatorData = async():Promise<IndicatorData>=>{
             Link,
             Source,
             Timeseries_Data,
+            Timeseries_Date,
             Timeseries_Label
         } = attributes;
 
         const timeseriesData = Timeseries_Data 
-            ? Timeseries_Data.split(',').filter(d=>d).map(d=>+d)
+            ? Timeseries_Data.split(',').reverse().filter(d=>d).map(d=>+d)
+            : []
+
+        const timeseriesDate = Timeseries_Date 
+            ? Timeseries_Date.split(',').reverse().filter(d=>d)
             : []
 
         const indicatorData:IndicatorData = {
@@ -69,12 +75,13 @@ export const fetchIndicatorData = async():Promise<IndicatorData>=>{
             indicatorName: Indicator_Name,
             indicatorVal: +Indicator_Value,
             timeseriesData,
+            timeseriesDate,
             timeseriesDataLabel: Timeseries_Label,
             source: Source,
             link: Link
         }
 
-        console.log(indicatorData);
+        console.log(attributes);
 
         return indicatorData;
 
