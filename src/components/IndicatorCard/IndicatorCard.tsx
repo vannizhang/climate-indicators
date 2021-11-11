@@ -80,7 +80,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                 </div>
                 
                 <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
-                    <a className="text-xs" href={link}>More Info</a>
+                    <a className="text-xs" href={link} target="_top">More Info</a>
                 </div>
                 
             </div>
