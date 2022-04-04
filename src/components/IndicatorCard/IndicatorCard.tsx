@@ -79,9 +79,9 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                     <span className="text-xs text-gray-400">source: {source}</span>
                 </div>
                 
-                <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
+                {/* <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
                     <a className="text-xs" href={link} target="_top">More Info</a>
-                </div>
+                </div> */}
                 
             </div>
         </div>

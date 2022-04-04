@@ -1,1 +1,1 @@
-export const BAR_COLOR = '#00619B'
+export const BAR_COLOR = '#1a4480'
