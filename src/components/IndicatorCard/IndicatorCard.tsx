@@ -31,6 +31,14 @@ const IndicatorCard: React.FC<IndicatorData> = ({
         return data
     })
 
+    const getSourceLink = (source:string)=>{
+        if(source.toLowerCase() !== 'NOAA National Weather Service'.toLowerCase()){
+            return source
+        }
+
+        return <a href='https://weather.gov' target='_blank'>{source}</a>
+    }
+
     return (
         <div className='text-custom-primary w-full'>
             <div className="border-b border-custom-primary border-opacity-30 pb-4 mb-3">
@@ -76,7 +84,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
 
             <div className="flex justify-between items-center">
                 <div>
-                    <span className="text-xs text-gray-400">source: {source}</span>
+                    <span className="text-xs text-gray-400">source: {getSourceLink(source)}</span>
                 </div>
                 
                 {/* <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
