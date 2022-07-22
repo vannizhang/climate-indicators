@@ -14,6 +14,8 @@ export type IndicatorData = {
     indicatorVal: number;
     timeseriesData: number[];
     timeseriesDate: string[];
+    // time series data derived from original time series data, e.g. % of population using the total population
+    derivedTimeseriesData?: string[];
     timeseriesDataLabel?: string;
     source: string;
     link?: string;
@@ -70,12 +72,25 @@ export const fetchIndicatorData = async():Promise<IndicatorData>=>{
             ? Timeseries_Date.split(',').reverse().filter(d=>d)
             : []
 
+        let derivedTimeseriesData: string[] = [];
+
+        // need to replace this hard coded data using a more generic method
+        if(ItemId === 'aa7280ec71f74a1d88ef0fd0ab9ae627'){
+
+            const US_TOTAL_POPULATION_2022 = 332403650;
+
+            derivedTimeseriesData = timeseriesData.map(num=>{
+                return Math.floor((num / US_TOTAL_POPULATION_2022) * 100).toString() + '%'
+            })
+        }
+
         const indicatorData:IndicatorData = {
             topic: Topic,
             indicatorName: Indicator_Name,
             indicatorVal: +Indicator_Value,
             timeseriesData,
             timeseriesDate,
+            derivedTimeseriesData,
             timeseriesDataLabel: Timeseries_Label,
             source: Source,
             link: Link

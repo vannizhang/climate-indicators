@@ -15,6 +15,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
     indicatorVal,
     timeseriesData,
     timeseriesDate,
+    derivedTimeseriesData,
     timeseriesDataLabel,
     source,
     link,
@@ -25,7 +26,8 @@ const IndicatorCard: React.FC<IndicatorData> = ({
         const data = {
             key: i.toString(),
             value,
-            label: timeseriesDate[i]
+            label: timeseriesDate[i],
+            additionalValue: derivedTimeseriesData[i]
         } as QuickD3ChartDataItem
 
         return data

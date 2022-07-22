@@ -20,6 +20,10 @@ const TooltipContent:React.FC<Props> = ({
     lineDataOnHover
 }) => {
 
+    if(!barDataOnHover){
+        return null
+    }
+
     return (
         <div
             style={{
@@ -30,15 +34,22 @@ const TooltipContent:React.FC<Props> = ({
             }}
         >
             <div>
-                <span>
-                    { barDataOnHover && barDataOnHover.label ? barDataOnHover.label + ': ' : null}
-                    { barDataOnHover ? numberWithCommas(barDataOnHover.value) : 'n/a' }
+                <span className=' text-gray-300'>
+                    { barDataOnHover && barDataOnHover.label ? barDataOnHover.label : null}
                 </span>
             </div>
 
-            {/* <div>
-                line data: { lineDataOnHover ? lineDataOnHover.value : 'n/a' }
-            </div> */}
+            <div>
+                <span>
+                    { barDataOnHover ? numberWithCommas(barDataOnHover.value) : 'n/a' }
+                </span>
+
+                { barDataOnHover.additionalValue && (
+                    <span className='ml-2'>
+                        {barDataOnHover.additionalValue}
+                    </span>
+                )}
+            </div>
         </div>
     )
 }

@@ -28,14 +28,7 @@ const CardGroup = () => {
             /> */}
 
             <IndicatorCard
-                topic={indicatorData.topic}
-                indicatorName={indicatorData.indicatorName}
-                indicatorVal={indicatorData.indicatorVal}
-                timeseriesData={indicatorData.timeseriesData}
-                timeseriesDate={indicatorData.timeseriesDate}
-                timeseriesDataLabel={indicatorData.timeseriesDataLabel}
-                source={indicatorData.source}
-                link={indicatorData.link}
+                {...indicatorData}
             />
         </div>
     );
