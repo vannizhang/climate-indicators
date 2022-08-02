@@ -12,21 +12,8 @@ const CardGroup = () => {
 
     return (
         <div 
-            className='p-2'
-            style={{
-                maxWidth: 600
-            }}
+            className='p-2 w-screen'
         >
-            {/* <IndicatorCard
-                topic="Extreme Heat"
-                indicatorName="people with at-risk condition"
-                indicatorVal={17011}
-                timeseriesData={[]}
-                timeseriesDataLabel={'30-Day Change'}
-                source="NOAA National Weather Service"
-                link="esri.com"
-            /> */}
-
             <IndicatorCard
                 {...indicatorData}
             />

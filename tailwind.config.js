@@ -12,7 +12,8 @@ module.exports = {
     colors: {
       ...defaultTheme.colors,
       custom: {
-        'primary': '#45687b'
+        'primary': '#001726',
+        'link': '#194480'
       }
     },
     extend: {

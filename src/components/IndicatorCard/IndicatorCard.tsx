@@ -34,39 +34,74 @@ const IndicatorCard: React.FC<IndicatorData> = ({
     })
 
     const getSourceLink = (source:string)=>{
-        if(source.toLowerCase() !== 'NOAA National Weather Service'.toLowerCase()){
+
+        let link = ''
+
+        // heat
+        if(source.toLowerCase() === 'NOAA National Weather Service'.toLowerCase()){
+            link = 'https://weather.gov';
+        }
+        // drought
+        else if (source.toLowerCase() === 'NIDIS/US Dept. Agriculture'.toLowerCase()){
+            link = 'https://drought.gov';
+        }
+        // wildfire
+        else if (source.toLowerCase() === 'National Interagency Fire Center'.toLowerCase()){
+            link = 'https://www.nifc.gov/';
+        }
+
+        if(!link){
             return source
         }
 
-        return <a href='https://weather.gov' target='_blank'>{source}</a>
+        return <a href={link} target='_blank' className='text-custom-link'>{source}</a>
     }
 
     return (
         <div className='text-custom-primary w-full'>
-            <div className="border-b border-custom-primary border-opacity-30 pb-4 mb-3">
-                <span className="text-4xl font-light">{topic}</span>
+            <div className="border-b border-custom-primary pb-4"
+            >
+                <span 
+                    style={{
+                        fontSize: 32,
+                        fontWeight: 400,
+                        lineHeight: '38px'
+                    }}
+                >{topic}</span>
             </div>
 
-            <div className="flex mb-2">
+            <div className="flex py-5">
                 <div
-                    style={{
-                        minWidth: '170px'
-                    }}
+                    className=' w-2/5'
                 >
-                    <div>
-                        <span className="text-4xl font-noraml">
+                    <div
+                        style={{
+                            marginBottom: '0.375rem'
+                        }}
+                    >
+                        <span style={{
+                            lineHeight: '46px',
+                            fontSize: 40,
+                            fontWeight: 400
+                        }}>
                             {numberWithCommas(indicatorVal)}
                         </span>
                     </div>
 
                     <div className="">
-                        <span className="text-2xl font-light">
+                        <span 
+                            style={{
+                                lineHeight: '28px',
+                                fontSize: 24,
+                                fontWeight: 300
+                            }}
+                        >
                             {indicatorName}
                         </span>
                     </div>
                 </div>
 
-                <div className="flex-grow ml-1">
+                <div className="w-3/5">
                     {
                         timeseriesDataLabel ? (
                             <div className='text-right text-sm text-gray-400'>{timeseriesDataLabel}</div>
@@ -84,9 +119,24 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                 </div>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-2">
                 <div>
-                    <span className="text-xs text-gray-400">source: {getSourceLink(source)}</span>
+                    <span className="text-custom-primary"
+                        style={{
+                            lineHeight: '18px',
+                            fontSize: 14,
+                            fontWeight: 400
+                        }}
+                    >Source: </span>
+                    <span
+                        style={{
+                            lineHeight: '18px',
+                            fontSize: 14,
+                            fontWeight: 500
+                        }}
+                    >
+                        {getSourceLink(source)}
+                    </span>
                 </div>
                 
                 {/* <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
