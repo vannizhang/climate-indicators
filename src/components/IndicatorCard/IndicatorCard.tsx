@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { numberWithCommas } from 'helper-toolkit-ts/dist/number';
 import {
     BarLineCombined
   } from '../QuickD3Chart';
 import { QuickD3ChartData, QuickD3ChartDataItem } from '../QuickD3Chart/types';
-import { BAR_COLOR } from '../../constants/style';
+import { BAR_COLOR, BAR_COLOR_CREATIVE_LAB } from '../../constants/style';
 import { IndicatorData } from '../../services/fetchIndicatorData';
+import { AppContext } from '../../contexts/AppContextProvider';
+import classNames from 'classnames';
 // import classnames from 'classnames'
 
 const IndicatorCard: React.FC<IndicatorData> = ({
@@ -20,6 +22,8 @@ const IndicatorCard: React.FC<IndicatorData> = ({
     source,
     link,
 }: IndicatorData) => {
+
+    const { shouldUseCreativeLabStyle } = useContext(AppContext)
 
     const data4BarChart: QuickD3ChartData = timeseriesData.map((value, i)=>{
 
@@ -36,7 +40,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
     const getSourceLink = (source:string)=>{
 
         let link = ''
-
+    
         // heat
         if(source.toLowerCase() === 'NOAA National Weather Service'.toLowerCase()){
             link = 'https://weather.gov';
@@ -49,26 +53,44 @@ const IndicatorCard: React.FC<IndicatorData> = ({
         else if (source.toLowerCase() === 'National Interagency Fire Center'.toLowerCase()){
             link = 'https://www.nifc.gov/';
         }
-
+    
         if(!link){
             return source
         }
-
-        return <a href={link} target='_blank' className='text-custom-link'>{source}</a>
+    
+        return <a 
+            href={link} 
+            target='_blank' 
+            className={classNames({
+                'text-gray-400': !shouldUseCreativeLabStyle,
+                'text-custom-link-create-lab': shouldUseCreativeLabStyle
+            })}
+        >
+            {source}
+        </a>
     }
 
     return (
-        <div className='text-custom-primary w-full'>
-            <div className="border-b border-custom-primary pb-4"
-            >
-                <span 
-                    style={{
-                        fontSize: 32,
-                        fontWeight: 400,
-                        lineHeight: '38px'
-                    }}
-                >{topic}</span>
-            </div>
+        <div 
+            className={classNames('w-full', {
+                'text-custom-primary': !shouldUseCreativeLabStyle,
+                'text-custom-primary-create-lab': shouldUseCreativeLabStyle
+            })}
+        >
+            {
+                // creative lab adds the header by themselves in the hub site so there is no need to show header is use creative labe
+                shouldUseCreativeLabStyle === false && (
+                    <div className="border-b border-gray-300 pb-4">
+                        <span 
+                            style={{
+                                fontSize: 32,
+                                fontWeight: 400,
+                                lineHeight: '38px'
+                            }}
+                        >{topic}</span>
+                    </div>
+                )
+            }
 
             <div className="flex py-5">
                 <div
@@ -104,14 +126,16 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                 <div className="w-3/5">
                     {
                         timeseriesDataLabel ? (
-                            <div className='text-right text-sm text-gray-400'>{timeseriesDataLabel}</div>
+                            <div 
+                                className={classNames('text-right text-sm')}
+                            >{timeseriesDataLabel}</div>
                         ) : null
                     }
                     
                     <div className='w-full h-20'>
                         <BarLineCombined 
                             // timeFormatSpecifier='%b %d'
-                            barColor={BAR_COLOR}
+                            barColor={shouldUseCreativeLabStyle ? BAR_COLOR_CREATIVE_LAB : BAR_COLOR}
                             data4Bars={data4BarChart}
                             showAxis={false}
                         />
@@ -119,25 +143,27 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                 </div>
             </div>
 
-            <div className="flex justify-between items-center mt-2">
-                <div>
-                    <span className="text-custom-primary"
-                        style={{
-                            lineHeight: '18px',
-                            fontSize: 14,
-                            fontWeight: 400
-                        }}
-                    >Source: </span>
-                    <span
-                        style={{
-                            lineHeight: '18px',
-                            fontSize: 14,
-                            fontWeight: 500
-                        }}
-                    >
-                        {getSourceLink(source)}
-                    </span>
-                </div>
+            <div 
+                className={classNames("mt-2", {
+                    'text-right': shouldUseCreativeLabStyle
+                })}
+            >
+                <span
+                    style={{
+                        lineHeight: '18px',
+                        fontSize: 14,
+                        fontWeight: 400
+                    }}
+                >Source: </span>
+                <span
+                    style={{
+                        lineHeight: '18px',
+                        fontSize: 14,
+                        fontWeight: 500
+                    }}
+                >
+                    {getSourceLink(source)}
+                </span>
                 
                 {/* <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
                     <a className="text-xs" href={link} target="_top">More Info</a>

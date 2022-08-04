@@ -4,14 +4,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import AppContextProvider from './contexts/AppContextProvider';
-
-import { RootPage } from './pages';
+import { AppLayout } from './components';
 
 (async () => {
     ReactDOM.render(
         <React.StrictMode>
             <AppContextProvider>
-                <RootPage />
+                <AppLayout />
             </AppContextProvider>
         </React.StrictMode>,
         document.getElementById('root')

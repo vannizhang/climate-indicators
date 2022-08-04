@@ -2,7 +2,8 @@ import React, { useState, createContext } from 'react';
 import { fetchIndicatorData, IndicatorData } from '../services/fetchIndicatorData';
 
 type AppContextValue = {
-    indicatorData:IndicatorData
+    indicatorData:IndicatorData;
+    shouldUseCreativeLabStyle?: boolean;
 };
 
 type AppContextProviderProps = {
@@ -20,7 +21,8 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({
         const indicatorData = await fetchIndicatorData();
         
         setValue({
-            indicatorData
+            indicatorData,
+            shouldUseCreativeLabStyle: location.pathname.includes('redesign')
         })
     };
 
