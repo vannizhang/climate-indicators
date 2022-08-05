@@ -80,19 +80,22 @@ const IndicatorCard: React.FC<IndicatorData> = ({
             {
                 // creative lab adds the header by themselves in the hub site so there is no need to show header is use creative labe
                 shouldUseCreativeLabStyle === false && (
-                    <div className="border-b border-gray-300 pb-4">
+                    <div className="border-b border-gray-300 pb-1">
                         <span 
                             style={{
                                 fontSize: 32,
                                 fontWeight: 400,
-                                lineHeight: '38px'
+                                // lineHeight: '38px'
                             }}
                         >{topic}</span>
                     </div>
                 )
             }
 
-            <div className="flex py-5">
+            <div className={classNames("flex", {
+                "py-5": shouldUseCreativeLabStyle,
+                "py-2": !shouldUseCreativeLabStyle
+            })}>
                 <div
                     className=' w-2/5'
                 >
