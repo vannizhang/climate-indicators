@@ -78,26 +78,31 @@ const IndicatorCard: React.FC<IndicatorData> = ({
             })}
         >
             {
-                // creative lab adds the header by themselves in the hub site so there is no need to show header is use creative labe
-                shouldUseCreativeLabStyle === false && (
-                    <div className="border-b border-gray-300 pb-1">
-                        <span 
-                            style={{
-                                fontSize: 32,
-                                fontWeight: 400,
-                                // lineHeight: '38px'
-                            }}
-                        >{topic}</span>
-                    </div>
-                )
+                <div className={classNames("border-b pb-1", {
+                    "border-gray-300": !shouldUseCreativeLabStyle,
+                    "border-custom-primary-create-lab": shouldUseCreativeLabStyle
+                })}>
+                    <span 
+                        style={{
+                            fontSize: 32,
+                            fontWeight: 400,
+                            lineHeight: shouldUseCreativeLabStyle ? '38px' : 'auto'
+                        }}
+                    >{topic}</span>
+                </div>
             }
 
-            <div className={classNames("flex", {
+            <div className={classNames({
+                "flex": !shouldUseCreativeLabStyle,
+                "block": shouldUseCreativeLabStyle,
                 "py-5": shouldUseCreativeLabStyle,
                 "py-2": !shouldUseCreativeLabStyle
             })}>
                 <div
-                    className=' w-2/5'
+                    className={classNames({
+                        "w-2/5": !shouldUseCreativeLabStyle,
+                        "w-full": shouldUseCreativeLabStyle
+                    })}
                 >
                     <div
                         style={{
@@ -126,19 +131,25 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                     </div>
                 </div>
 
-                <div className="w-3/5">
+                <div className={classNames({
+                    "w-3/5": !shouldUseCreativeLabStyle,
+                    "w-full": shouldUseCreativeLabStyle,
+                    'pt-5': shouldUseCreativeLabStyle
+                })}>
                     {
                         timeseriesDataLabel ? (
                             <div 
-                                className={classNames('text-right text-sm')}
+                                className={classNames('text-sm', {
+                                    'text-right': !shouldUseCreativeLabStyle,
+                                })}
                             >{timeseriesDataLabel}</div>
                         ) : null
                     }
                     
-                    <div className='w-full h-20'>
+                    <div className='w-full h-20 mt-3'>
                         <BarLineCombined 
                             // timeFormatSpecifier='%b %d'
-                            barColor={shouldUseCreativeLabStyle ? BAR_COLOR_CREATIVE_LAB : BAR_COLOR}
+                            barColor={BAR_COLOR}
                             data4Bars={data4BarChart}
                             showAxis={false}
                         />
@@ -147,9 +158,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
             </div>
 
             <div 
-                className={classNames("mt-2", {
-                    'text-right': shouldUseCreativeLabStyle
-                })}
+                className={classNames("mt-5")}
             >
                 <span
                     style={{
