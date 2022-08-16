@@ -4,6 +4,7 @@ import { fetchIndicatorData, IndicatorData } from '../services/fetchIndicatorDat
 type AppContextValue = {
     indicatorData:IndicatorData;
     shouldUseCreativeLabStyle?: boolean;
+    shouldShowTrendColorInBarChart?: boolean;
 };
 
 type AppContextProviderProps = {
@@ -22,7 +23,8 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({
         
         setValue({
             indicatorData,
-            shouldUseCreativeLabStyle: location.pathname.includes('redesign')
+            shouldUseCreativeLabStyle: location.pathname.includes('redesign'),
+            shouldShowTrendColorInBarChart: true,
         })
     };
 

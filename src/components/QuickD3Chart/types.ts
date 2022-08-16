@@ -5,6 +5,8 @@ export type QuickD3ChartDataItem = {
     label?: string
     // will be used to display derived information like % of population
     additionalValue?: string;
+    // custom fill color for the item
+    fill?: string;
 }
 
 export type QuickD3ChartData = QuickD3ChartDataItem[];

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { numberWithCommas } from 'helper-toolkit-ts/dist/number';
 import {
     BarLineCombined
@@ -23,19 +23,63 @@ const IndicatorCard: React.FC<IndicatorData> = ({
     link,
 }: IndicatorData) => {
 
-    const { shouldUseCreativeLabStyle } = useContext(AppContext)
+    const { shouldUseCreativeLabStyle, shouldShowTrendColorInBarChart } = useContext(AppContext)
 
-    const data4BarChart: QuickD3ChartData = timeseriesData.map((value, i)=>{
+    const data4BarChart: QuickD3ChartData  = useMemo(()=>{
 
-        const data = {
-            key: i.toString(),
-            value,
-            label: timeseriesDate[i],
-            additionalValue: derivedTimeseriesData[i]
-        } as QuickD3ChartDataItem
+        const output:QuickD3ChartData =[];
 
-        return data
-    })
+        for(let i = 0; i < timeseriesData.length; i++){
+
+            let fill = BAR_COLOR //'rgab(150,150,150)'
+
+            if(shouldShowTrendColorInBarChart){
+
+                const currValue = timeseriesData[i];
+                const prevValue = i > 1 
+                    ? timeseriesData[i-1] 
+                    : timeseriesData[i];
+    
+                if(prevValue < currValue){
+                    // red color indicates going down
+                    fill = '#f5867a'
+                } else if (prevValue > currValue){
+                    // green color indicates going down
+                    fill = '#81b880'
+                } else {
+                    // gray indicates neutral
+                    fill = '#aaaaaa'
+                }
+            }
+
+            const data = {
+                key: i.toString(),
+                value: timeseriesData[i],
+                label: timeseriesDate[i],
+                additionalValue: derivedTimeseriesData[i],
+                fill
+            } as QuickD3ChartDataItem
+
+            output.push(data)
+        }
+
+        return output
+
+    }, [timeseriesData])
+
+    // const data4BarChart: QuickD3ChartData = timeseriesData.map((value, i)=>{
+
+    //     console.log(value)
+
+    //     const data = {
+    //         key: i.toString(),
+    //         value,
+    //         label: timeseriesDate[i],
+    //         additionalValue: derivedTimeseriesData[i]
+    //     } as QuickD3ChartDataItem
+
+    //     return data
+    // })
 
     const getSourceLink = (source:string)=>{
 
