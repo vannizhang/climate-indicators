@@ -11,9 +11,9 @@ type AppContextProviderProps = {
     children?: React.ReactNode;
 };
 
-const hashData = parseHash();
+// const hashData = parseHash();
 // item id of the feature layer
-const shouldUseCreativeLabStyle = hashData['newDesign'] || false;
+// const shouldUseCreativeLabStyle = hashData['id'] === undefined;
 
 export const AppContext = createContext<AppContextValue>(null);
 
@@ -37,7 +37,7 @@ const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
     return (
         <AppContext.Provider value={{
-            shouldUseCreativeLabStyle: location.pathname.includes('redesign') || shouldUseCreativeLabStyle
+            // shouldUseCreativeLabStyle
         }}>
             {/* {value ? children : null} */}
             { children }

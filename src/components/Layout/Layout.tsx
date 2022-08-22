@@ -1,7 +1,7 @@
 import { parseHash } from 'helper-toolkit-ts/dist/url';
 import React from 'react';
 import CardView from './CardView';
-import DashboardView from './DashboardView';
+import { Dashboard } from '../';
 
 const hashData = parseHash();
 // item id of the feature layer
@@ -13,7 +13,7 @@ const Layout = () => {
         <CardView />
     )
     : (
-        <DashboardView />
+        <Dashboard />
     );
 };
 

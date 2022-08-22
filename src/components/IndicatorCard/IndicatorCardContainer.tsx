@@ -4,10 +4,14 @@ import IndicatorCard from './IndicatorCard';
 
 type Props = {
     itemId: string;
+    shouldUseCreativeLabStyle?: boolean;
+    onSelect?: (itemId:string)=>void;
 }
 
 const IndicatorCardContainer:FC<Props> = ({
-    itemId
+    itemId,
+    shouldUseCreativeLabStyle,
+    onSelect
 }) => {
 
     // const indicatorData = useIndicatorData(itemId);
@@ -35,12 +39,22 @@ const IndicatorCardContainer:FC<Props> = ({
 
     return indicatorData 
         ? (
-            <IndicatorCard
-                {...indicatorData}
-            /> 
+            <div className='relative h-full w-full'
+                onClick={()=>{
+                    if(onSelect){
+                        onSelect(itemId)
+                    }
+                }}
+            >
+                <IndicatorCard
+                    data={indicatorData}
+                    shouldUseCreativeLabStyle={shouldUseCreativeLabStyle}
+                /> 
+            </div>
+
         )
         : (
-            <div className='text-center'>loading</div>
+            <div className='text-center w-full h-full'>loading</div>
         )
 }
 

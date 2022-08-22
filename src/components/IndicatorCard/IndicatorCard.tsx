@@ -10,20 +10,31 @@ import { AppContext } from '../../contexts/AppContextProvider';
 import classNames from 'classnames';
 // import classnames from 'classnames'
 
-const IndicatorCard: React.FC<IndicatorData> = ({
-    // isFeatured=false,
-    topic,
-    indicatorName,
-    indicatorVal,
-    timeseriesData,
-    timeseriesDate,
-    derivedTimeseriesData,
-    timeseriesDataLabel,
-    source,
-    link,
-}: IndicatorData) => {
+type Props = {
+    data: IndicatorData;
+    shouldUseCreativeLabStyle?: boolean;
+}
 
-    const { shouldUseCreativeLabStyle } = useContext(AppContext)
+const IndicatorCard: React.FC<Props> = ({
+    // isFeatured=false,
+    data,
+    shouldUseCreativeLabStyle=false
+}: Props) => {
+
+    const {
+        // isFeatured=false,
+        topic,
+        indicatorName,
+        indicatorVal,
+        timeseriesData,
+        timeseriesDate,
+        derivedTimeseriesData,
+        timeseriesDataLabel,
+        source,
+        link,
+    } = data
+
+    // const { shouldUseCreativeLabStyle } = useContext(AppContext)
 
     const data4BarChart: QuickD3ChartData = timeseriesData.map((value, i)=>{
 
@@ -134,7 +145,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
                 <div className={classNames({
                     "w-3/5": !shouldUseCreativeLabStyle,
                     "w-full": shouldUseCreativeLabStyle,
-                    'pt-5': shouldUseCreativeLabStyle
+                    'pt-4': shouldUseCreativeLabStyle
                 })}>
                     {
                         timeseriesDataLabel ? (
@@ -158,7 +169,7 @@ const IndicatorCard: React.FC<IndicatorData> = ({
             </div>
 
             <div 
-                className={classNames("mt-5")}
+                className={classNames("mt-1")}
             >
                 <span
                     style={{
