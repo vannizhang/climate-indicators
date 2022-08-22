@@ -21,20 +21,20 @@ export type IndicatorData = {
     link?: string;
 }
 
-const hashData = parseHash();
+// const hashData = parseHash();
 // item id of the feature layer
-const ItemId = hashData['id'] || null;
+// const ItemId = hashData['id'] || null;
 
 type FieldName = 'Indicator_Name' | 'Indicator_Value' | 'Link' | 'Source' | 'Timeseries_Data' | 'Timeseries_Label' | 'Topic' | 'Timeseries_Date';
 
-export const fetchIndicatorData = async():Promise<IndicatorData>=>{
+export const fetchIndicatorData = async(itemId: string):Promise<IndicatorData>=>{
 
-    if(!ItemId){
+    if(!itemId){
         return null
     }
     
     try {
-        const item = await getItem(ItemId);
+        const item = await getItem(itemId);
 
         const url = item.url + '/0';
 
@@ -75,7 +75,7 @@ export const fetchIndicatorData = async():Promise<IndicatorData>=>{
         let derivedTimeseriesData: string[] = [];
 
         // need to replace this hard coded data using a more generic method
-        if(ItemId === 'aa7280ec71f74a1d88ef0fd0ab9ae627'){
+        if(itemId === 'aa7280ec71f74a1d88ef0fd0ab9ae627'){
 
             const US_TOTAL_POPULATION_2022 = 332403650;
 
