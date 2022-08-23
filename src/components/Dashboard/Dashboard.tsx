@@ -11,7 +11,7 @@ const IndicatorCardData = [
     },
     {
         // drought
-        itemId: 'e99c126b439b4e4282c8d10c738a6933',
+        itemId: '637947a9288e4ba3ba812722ef30d98f',
         webmapId: 'ce4ffdac4def47de9578ca718277852e'
     },
     {
