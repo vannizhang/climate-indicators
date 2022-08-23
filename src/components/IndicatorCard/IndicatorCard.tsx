@@ -103,11 +103,11 @@ const IndicatorCard: React.FC<Props> = ({
                 </div>
             }
 
-            <div className={classNames({
+            <div className={classNames('py-2', {
                 "flex": !shouldUseCreativeLabStyle,
                 "block": shouldUseCreativeLabStyle,
-                "py-5": shouldUseCreativeLabStyle,
-                "py-2": !shouldUseCreativeLabStyle
+                // "py-5": shouldUseCreativeLabStyle,
+                // "py-2": !shouldUseCreativeLabStyle
             })}>
                 <div
                     className={classNames({
@@ -116,13 +116,13 @@ const IndicatorCard: React.FC<Props> = ({
                     })}
                 >
                     <div
-                        style={{
-                            marginBottom: '0.375rem'
-                        }}
+                        // style={{
+                        //     marginBottom: '0.375rem'
+                        // }}
                     >
                         <span style={{
-                            lineHeight: '46px',
-                            fontSize: 40,
+                            // lineHeight: '46px',
+                            fontSize: 32,
                             fontWeight: 400
                         }}>
                             {numberWithCommas(indicatorVal)}
@@ -132,8 +132,8 @@ const IndicatorCard: React.FC<Props> = ({
                     <div className="">
                         <span 
                             style={{
-                                lineHeight: '28px',
-                                fontSize: 24,
+                                // lineHeight: '28px',
+                                fontSize: 22,
                                 fontWeight: 300
                             }}
                         >
@@ -145,7 +145,7 @@ const IndicatorCard: React.FC<Props> = ({
                 <div className={classNames({
                     "w-3/5": !shouldUseCreativeLabStyle,
                     "w-full": shouldUseCreativeLabStyle,
-                    'pt-4': shouldUseCreativeLabStyle
+                    'pt-2': shouldUseCreativeLabStyle
                 })}>
                     {
                         timeseriesDataLabel ? (
