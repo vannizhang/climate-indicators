@@ -10,21 +10,21 @@ a {
 }
 
 /* width */
-::-webkit-scrollbar {
-    height: 8px;
+.fancy-scroll::-webkit-scrollbar {
+    height: auto;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
-    background: #f9f9f9;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
+.fancy-scroll::-webkit-scrollbar-track {
     background: #d3d3d3;
 }
 
+/* Handle */
+.fancy-scroll::-webkit-scrollbar-thumb {
+    background: rgba(26, 68, 128, .85);
+}
+
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #d9d9d9;
+.fancy-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(26, 68, 128, 1);
 }

@@ -39,7 +39,7 @@ const Dashboard = () => {
 
     return (
         <div className='absolute top-0 left-0 flex flex-row md:flex-col w-full h-full'>
-            <div className='block md:flex w-full overflow-y-auto scroller'>
+            <div className='block md:flex w-full overflow-y-auto'>
 
                 { IndicatorCardData.map(({itemId, webmapId})=>{
 
