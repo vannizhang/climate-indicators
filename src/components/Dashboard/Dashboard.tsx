@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import React, { useState } from 'react'
 import { IndicatorCard } from '..'
+import LegendWidget from './LegendWidget'
 import MapView from './MapView'
 
 const IndicatorCardData = [
@@ -66,7 +67,9 @@ const Dashboard = () => {
             <div className='relative flex-grow hidden md:block'>
                 <MapView 
                     webmapId={selectedWebmapId}
-                />
+                >
+                    <LegendWidget />
+                </MapView>
             </div>
         </div>
     )
