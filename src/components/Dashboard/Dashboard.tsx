@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { IndicatorCard } from '..'
 import LegendWidget from './LegendWidget'
 import MapView from './MapView'
@@ -37,9 +37,19 @@ const Dashboard = () => {
     const [ selectedItemId, setSelectedItemId ] = useState<string>(IndicatorCardData[0].itemId)
     const [ selectedWebmapId, setSelectedWebmapId ] = useState<string>(IndicatorCardData[0].webmapId)
 
+    const [shouldShowArrowButton, setShouldShowArrowButton] = useState(true)
+    const chartsContainerRef = useRef<HTMLDivElement>()
+
+    const scrollToRightEndOfChartsContainer = ()=>{
+        chartsContainerRef.current.scrollLeft = chartsContainerRef.current.scrollWidth;
+    }
+
     return (
         <div className='absolute top-0 left-0 flex flex-row md:flex-col w-full h-full'>
-            <div className='block md:flex w-full overflow-y-auto'>
+            <div className='relative block md:flex w-full overflow-y-auto'
+                ref={chartsContainerRef}
+                onScroll={setShouldShowArrowButton.bind(null, false)}
+            >
 
                 { IndicatorCardData.map(({itemId, webmapId})=>{
 
@@ -61,6 +71,19 @@ const Dashboard = () => {
                         </div>
                     )
                 })}
+
+                { 
+                    shouldShowArrowButton && (
+                        <div className='absolute right-0 top-0 bottom-0 w-20 hidden md:flex xl:hidden items-center cursor-pointer'
+                            style={{
+                                background: `linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(220,220,220,1) 100%)`
+                            }}
+                            onClick={scrollToRightEndOfChartsContainer}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M13.207 7l9 9-9 9h-1.414l9-9-9-9z"/><path fill="none" d="M0 0h32v32H0z"/></svg>
+                        </div>
+                    )
+                }
 
             </div>
 
