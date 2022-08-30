@@ -28,7 +28,7 @@ const IndicatorCardData = [
     {
         // Coastal Flooding
         itemId: 'b7ba049c1c184853b85cb5d7d11d1d71',
-        webmapId: ''
+        webmapId: '82d09c4566f34e9e96420ec92172d8e4'
     },
 ]
 
