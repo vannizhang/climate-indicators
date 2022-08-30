@@ -4,20 +4,22 @@ import {
     BarLineCombined
   } from '../QuickD3Chart';
 import { QuickD3ChartData, QuickD3ChartDataItem } from '../QuickD3Chart/types';
-import { BAR_COLOR, BAR_COLOR_CREATIVE_LAB } from '../../constants/style';
+import { BAR_COLOR } from '../../constants/style';
 import { IndicatorData } from '../../services/fetchIndicatorData';
-import { AppContext } from '../../contexts/AppContextProvider';
+// import { AppContext } from '../../contexts/AppContextProvider';
 import classNames from 'classnames';
 // import classnames from 'classnames'
 
 type Props = {
     data: IndicatorData;
+    shouldShowChart?: boolean
     shouldUseCreativeLabStyle?: boolean;
 }
 
 const IndicatorCard: React.FC<Props> = ({
     // isFeatured=false,
     data,
+    shouldShowChart=true,
     shouldUseCreativeLabStyle=false
 }: Props) => {
 
@@ -88,110 +90,72 @@ const IndicatorCard: React.FC<Props> = ({
                 'text-custom-primary-create-lab': shouldUseCreativeLabStyle
             })}
         >
-            {
-                <div className={classNames("border-b pb-1", {
-                    "border-gray-300": !shouldUseCreativeLabStyle,
-                    "border-custom-primary-create-lab": shouldUseCreativeLabStyle
-                })}>
-                    <span 
-                        style={{
-                            fontSize: 32,
-                            fontWeight: 400,
-                            lineHeight: shouldUseCreativeLabStyle ? '38px' : 'auto'
-                        }}
-                    >{topic}</span>
-                </div>
-            }
+            <div>
+                <span className='font-semibold text-xl'>{topic}</span>
+            </div>
 
-            <div className={classNames('py-2', {
+            <div className={classNames('mt-2', {
                 "flex": !shouldUseCreativeLabStyle,
                 "block": shouldUseCreativeLabStyle,
                 // "py-5": shouldUseCreativeLabStyle,
                 // "py-2": !shouldUseCreativeLabStyle
             })}>
                 <div
-                    className={classNames({
+                    className={classNames('flex items-center justify-between', {
                         "w-2/5": !shouldUseCreativeLabStyle,
                         "w-full": shouldUseCreativeLabStyle
                     })}
                 >
-                    <div
-                        // style={{
-                        //     marginBottom: '0.375rem'
-                        // }}
-                    >
-                        <span style={{
-                            // lineHeight: '46px',
-                            fontSize: 32,
-                            fontWeight: 400
-                        }}>
-                            {numberWithCommas(indicatorVal)}
-                        </span>
-                    </div>
-
                     <div className="">
-                        <span 
-                            style={{
-                                // lineHeight: '28px',
-                                fontSize: 22,
-                                fontWeight: 300
-                            }}
-                        >
+                        <span className='text-sm'>
                             {indicatorName}
                         </span>
                     </div>
-                </div>
 
-                <div className={classNames({
-                    "w-3/5": !shouldUseCreativeLabStyle,
-                    "w-full": shouldUseCreativeLabStyle,
-                    'pt-2': shouldUseCreativeLabStyle
-                })}>
-                    {
-                        timeseriesDataLabel ? (
-                            <div 
-                                className={classNames('text-sm', {
-                                    'text-right': !shouldUseCreativeLabStyle,
-                                })}
-                            >{timeseriesDataLabel}</div>
-                        ) : null
-                    }
-                    
-                    <div className='w-full h-20 mt-3'>
-                        <BarLineCombined 
-                            // timeFormatSpecifier='%b %d'
-                            barColor={BAR_COLOR}
-                            data4Bars={data4BarChart}
-                            showAxis={false}
-                        />
+                    <div>
+                        <span className='font-semibold text-lg'>
+                            {numberWithCommas(indicatorVal)}
+                        </span>
                     </div>
                 </div>
+
+                {
+                    shouldShowChart && (
+                        <div className={classNames({
+                            "w-3/5": !shouldUseCreativeLabStyle,
+                            "w-full": shouldUseCreativeLabStyle,
+                            'pt-2': shouldUseCreativeLabStyle
+                        })}>
+                            {
+                                timeseriesDataLabel ? (
+                                    <div 
+                                        className={classNames('text-xs', {
+                                            'text-right': !shouldUseCreativeLabStyle,
+                                        })}
+                                    >{timeseriesDataLabel}</div>
+                                ) : null
+                            }
+                            
+                            <div className='w-full h-20 mt-3'>
+                                <BarLineCombined 
+                                    // timeFormatSpecifier='%b %d'
+                                    barColor={BAR_COLOR}
+                                    data4Bars={data4BarChart}
+                                    showAxis={false}
+                                />
+                            </div>
+                        </div>
+                    )
+                }
             </div>
 
             <div 
-                className={classNames("mt-1")}
+                className={classNames("mt-2 text-xs")}
             >
-                <span
-                    style={{
-                        lineHeight: '18px',
-                        fontSize: 14,
-                        fontWeight: 400
-                    }}
-                >Source: </span>
-                <span
-                    style={{
-                        lineHeight: '18px',
-                        fontSize: 14,
-                        fontWeight: 500
-                    }}
-                >
+                <span>Source: </span>
+                <span>
                     {getSourceLink(source)}
                 </span>
-                
-                {/* <div className='cursor-pointer bg-gray-400 hover:bg-gray-600 text-white rounded-full px-3 py-1 flex items-center'>
-                    <a className="text-xs" href={link} target="_top">More Info</a>
-                </div> */}
-                
             </div>
         </div>
     );

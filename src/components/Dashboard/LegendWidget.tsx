@@ -33,7 +33,7 @@ const LegendWidget: React.FC<Props> = ({ mapView }) => {
                 view: mapView,
                 content: legend,
                 expandIconClass: 'esri-icon-legend',
-                expanded: true,
+                expanded: false,
                 mode: 'floating',
             });
 

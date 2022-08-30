@@ -4,12 +4,14 @@ import IndicatorCard from './IndicatorCard';
 
 type Props = {
     itemId: string;
+    shouldShowChart?: boolean;
     shouldUseCreativeLabStyle?: boolean;
     onSelect?: (itemId:string)=>void;
 }
 
 const IndicatorCardContainer:FC<Props> = ({
     itemId,
+    shouldShowChart=false,
     shouldUseCreativeLabStyle,
     onSelect
 }) => {
@@ -48,6 +50,7 @@ const IndicatorCardContainer:FC<Props> = ({
             >
                 <IndicatorCard
                     data={indicatorData}
+                    shouldShowChart={shouldShowChart}
                     shouldUseCreativeLabStyle={shouldUseCreativeLabStyle}
                 /> 
             </div>

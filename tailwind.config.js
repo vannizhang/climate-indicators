@@ -14,7 +14,8 @@ module.exports = {
       custom: {
         'primary': '#45687b',
         'primary-create-lab': '#001726',
-        'link-create-lab': '#194480'
+        'link-create-lab': '#194480',
+        'bar': '#1a4480'
       }
     },
     extend: {
@@ -22,6 +23,9 @@ module.exports = {
         'hub-container': '1124px',
         'indicator-name': '12rem'
       },
+      spacing: {
+        '350px': '350px'
+      }
     }
   },
   variants: {
