@@ -136,7 +136,7 @@ const IndicatorCard: React.FC<Props> = ({
                                 ) : null
                             }
                             
-                            <div className='w-full h-20 mt-3'>
+                            <div className='w-full h-20 mt-3 border-b border-gray-200'>
                                 <BarLineCombined 
                                     // timeFormatSpecifier='%b %d'
                                     barColor={BAR_COLOR}
@@ -150,7 +150,7 @@ const IndicatorCard: React.FC<Props> = ({
             </div>
 
             <div 
-                className={classNames("mt-2 text-xs")}
+                className={classNames("mt-3 text-xs")}
             >
                 <span>Source: </span>
                 <span>
