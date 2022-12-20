@@ -66,6 +66,10 @@ const IndicatorCard: React.FC<Props> = ({
         else if (source.toLowerCase() === 'National Interagency Fire Center'.toLowerCase()){
             link = 'https://www.nifc.gov/';
         }
+        // drought
+        else if(source.toLowerCase() === 'NOAA/NIDIS Drought.gov'.toLowerCase()){
+            link = 'https://drought.gov/';
+        }
     
         if(!link){
             return source

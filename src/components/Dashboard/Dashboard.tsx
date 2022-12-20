@@ -6,19 +6,14 @@ import MapView from './MapView'
 
 const IndicatorCardData = [
     {
-        // extreme heat
-        itemId: 'aa7280ec71f74a1d88ef0fd0ab9ae627', // item id of the feature table prepared by Gonzalo that provides indicator data
-        webmapId: '0a5fe1d4de9d4a7783708e2d5c2115b2' // item id of the web map that prepared by Dan Pisut
+        // wildfire
+        itemId: '8d114323583b4331b163d15e70a01caa',
+        webmapId: 'e1294742cc8e48fba4a6c17ad58e4f19'
     },
     {
         // drought
         itemId: '637947a9288e4ba3ba812722ef30d98f',
         webmapId: 'ce4ffdac4def47de9578ca718277852e'
-    },
-    {
-        // wildfire
-        itemId: '8d114323583b4331b163d15e70a01caa',
-        webmapId: 'e1294742cc8e48fba4a6c17ad58e4f19'
     },
     {
         // Inland Flooding
@@ -29,6 +24,11 @@ const IndicatorCardData = [
         // Coastal Flooding
         itemId: 'b7ba049c1c184853b85cb5d7d11d1d71',
         webmapId: '82d09c4566f34e9e96420ec92172d8e4'
+    },
+    {
+        // extreme heat
+        itemId: 'aa7280ec71f74a1d88ef0fd0ab9ae627', // item id of the feature table prepared by Gonzalo that provides indicator data
+        webmapId: '0a5fe1d4de9d4a7783708e2d5c2115b2' // item id of the web map that prepared by Dan Pisut
     },
 ]
 
