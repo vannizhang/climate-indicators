@@ -1,8 +1,3 @@
-import { parseHash } from 'helper-toolkit-ts/dist/url'
-// import {
-//     getItem
-// } from "@esri/arcgis-rest-portal";
-
 import {
     queryFeatures,
     IQueryFeaturesResponse
@@ -20,10 +15,6 @@ export type IndicatorData = {
     source: string;
     link?: string;
 }
-
-// const hashData = parseHash();
-// item id of the feature layer
-// const ItemId = hashData['id'] || null;
 
 type FieldName = 'Indicator_Name' | 'Indicator_Value' | 'Link' | 'Source' | 'Timeseries_Data' | 'Timeseries_Label' | 'Topic' | 'Timeseries_Date';
 
