@@ -46,8 +46,8 @@ Example of `IndicatorCardData` in `./src/constants/arcgis.ts`
 export const IndicatorCardData = [
     {
         // extreme heat
-        itemId: 'aa7280ec71f74a1d88ef0fd0ab9ae627', // item id of the feature table prepared by Gonzalo that provides indicator data
-        webmapId: '0a5fe1d4de9d4a7783708e2d5c2115b2' // item id of the web map that prepared by Dan Pisut
+        itemId: 'aa7280ec71f74a1d88ef0fd0ab9ae627', // item id of the feature table that provides indicator data
+        webmapId: '0a5fe1d4de9d4a7783708e2d5c2115b2' // item id of the web map associated with this topic
     },
     {
         // drought
