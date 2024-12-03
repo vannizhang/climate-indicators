@@ -22,6 +22,7 @@ type Props = {
     margin?: Margin;
     resizable?: boolean;
     dimensionOnChange?: (dimension:Dimension)=>void;
+    children: React.ReactNode;
 }
 
 const SvgContainer:React.FC<Props>= ({

@@ -3,7 +3,7 @@ import React, {
     useEffect
 } from 'react';
 
-import { select, mouse, ScaleBand, ScaleLinear, ScaleTime } from 'd3';
+import { select, ScaleBand, ScaleLinear, ScaleTime } from 'd3';
 
 import { 
     SvgContainerData 
@@ -82,8 +82,8 @@ const PointerEventsOverlay:React.FC<Props> = ({
             .on('mouseleave', () => {
                 setDataOnHover(null);
             })
-            .on('mousemove', function () {
-                const mousePosX = mouse(this)[0];
+            .on('mousemove',  (evt:MouseEvent)=>{
+                const mousePosX = evt.offsetX //mouse(this)[0];
                 // console.log(mousePosX)
                 setDataOnHover(getDataByMousePos(mousePosX));
             });

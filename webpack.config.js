@@ -18,9 +18,11 @@ module.exports =  (env, options)=> {
     return {
         entry: path.resolve(__dirname, './src/index.tsx'),
         output: {
-            path: path.resolve(__dirname, './dist'),
+            path: path.resolve(__dirname, `./dist`),
             filename: '[name].[contenthash].js',
             chunkFilename: '[name].[contenthash].js',
+            clean: true,
+            assetModuleFilename: `[name][contenthash][ext][query]`
         },
         devtool: 'source-map',
         resolve: {
@@ -47,8 +49,14 @@ module.exports =  (env, options)=> {
                         }
                     ],
                 },
-                { test: /\.(woff|woff2|ttf|eot)$/,  loader: "file-loader" },
-                { test: /\.(png|jpg|gif|svg)$/,  loader: "file-loader" },
+                {
+                    test: /\.(woff|woff2|ttf|eot)$/,
+                    type: 'asset/resource',
+                },
+                {
+                    test: /\.(png|jpg|gif|svg)$/,
+                    type: 'asset/resource',
+                }
             ]
         },
         plugins: [

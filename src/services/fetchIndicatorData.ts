@@ -1,7 +1,7 @@
 import { parseHash } from 'helper-toolkit-ts/dist/url'
-import {
-    getItem
-} from "@esri/arcgis-rest-portal";
+// import {
+//     getItem
+// } from "@esri/arcgis-rest-portal";
 
 import {
     queryFeatures,
@@ -34,7 +34,9 @@ export const fetchIndicatorData = async(itemId: string):Promise<IndicatorData>=>
     }
     
     try {
-        const item = await getItem(itemId);
+        const fetchItemRes = await fetch(`https://www.arcgis.com/sharing/rest/content/items/${itemId}?f=json`)
+
+        const item = await fetchItemRes.json();
 
         const url = item.url + '/0';
 
