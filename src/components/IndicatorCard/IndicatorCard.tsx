@@ -6,7 +6,6 @@ import {
 import { QuickD3ChartData, QuickD3ChartDataItem } from '../QuickD3Chart/types';
 import { BAR_COLOR, BAR_COLOR_CREATIVE_LAB } from '../../constants/style';
 import { IndicatorData } from '../../services/fetchIndicatorData';
-import { AppContext } from '../../contexts/AppContextProvider';
 import classNames from 'classnames';
 // import classnames from 'classnames'
 

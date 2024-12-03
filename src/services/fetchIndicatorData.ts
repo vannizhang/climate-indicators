@@ -2,6 +2,7 @@ import {
     queryFeatures,
     IQueryFeaturesResponse
 } from "@esri/arcgis-rest-feature-layer";
+import { ArcGIS_PORTAL_ROOT_URL } from "../constants/arcgis";
 
 export type IndicatorData = {
     topic: string;
@@ -25,7 +26,7 @@ export const fetchIndicatorData = async(itemId: string):Promise<IndicatorData>=>
     }
     
     try {
-        const fetchItemRes = await fetch(`https://www.arcgis.com/sharing/rest/content/items/${itemId}?f=json`)
+        const fetchItemRes = await fetch(`${ArcGIS_PORTAL_ROOT_URL}/sharing/rest/content/items/${itemId}?f=json`)
 
         const item = await fetchItemRes.json();
 
