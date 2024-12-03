@@ -78,10 +78,10 @@ Feature tables must include the following fields to populate indicator cards:
 
 - **Topic**: Topic of the Climate Indicator (e.g., `Extreme Heat`)
 - **Indicator_Name**: Name of the Indicator Value (e.g., `People under heat alerts`)
-- **Indicator_Value**: Value of this indicator
+- **Indicator_Value**: Current Value of this indicator (e.g., `50000`)
 - **Link**: URL to the source (e.g., `https://www.weather.gov/`)
 - **Source**: Name of the source agency (e.g., `NOAA National Weather Service`)
-- **Timeseries_Data**: Comma-separated values that will be used to populate the time series chart in the indicator card (e.g., `0,0,0,0,...`)
+- **Timeseries_Data**: Comma-separated values that will be used to populate the time series chart in the indicator card (e.g., `10000,9500,97500,80000,...`)
 - **Timeseries_Date**: Comma-separated date strings associated with each value in the `Timeseries_Data` (e.g., `12/03/24,12/02/24,12/01/24,...`)
 - **Timeseries_Label**: Label that describes the time series data (e.g., `Last 30 days`)
 
@@ -94,5 +94,5 @@ http://localhost:8080/#id={featureTableItemId}
 
 For example:
 ```
-'http://localhost:8080/#id=aa7280ec71f74a1d88ef0fd0ab9ae627'
+http://localhost:8080/#id=aa7280ec71f74a1d88ef0fd0ab9ae627
 ```
