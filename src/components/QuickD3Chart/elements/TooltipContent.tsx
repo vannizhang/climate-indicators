@@ -6,7 +6,8 @@ import {
     TOOLTIP_PADDING
 } from '../constants';
 import { QuickD3ChartDataItem } from '../types';
-import { numberWithCommas } from 'helper-toolkit-ts/dist/number'
+import { numberWithCommas } from '../../../utils/helpers';
+
 
 type Props = {
     index4ItemOnHover?: number;

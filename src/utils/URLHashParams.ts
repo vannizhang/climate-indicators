@@ -1,14 +1,14 @@
-import { urlFns } from 'helper-toolkit-ts';
+// import { urlFns } from 'helper-toolkit-ts';
 
-type UrlHashParamKey = '@';
+// type UrlHashParamKey = '@';
 
-type HashParams = Record<UrlHashParamKey, string>;
+// type HashParams = Record<UrlHashParamKey, string>;
 
-export const DEFAULT_HASH_PARAMS: HashParams = urlFns.parseHash();
+// export const DEFAULT_HASH_PARAMS: HashParams = urlFns.parseHash();
 
-export const setHashParam = (key: UrlHashParamKey, value: string) => {
-    urlFns.updateHashParam({
-        key,
-        value,
-    });
-};
+// export const setHashParam = (key: UrlHashParamKey, value: string) => {
+//     urlFns.updateHashParam({
+//         key,
+//         value,
+//     });
+// };

@@ -70,11 +70,9 @@
   "dependencies": {
     "@esri/arcgis-rest-feature-layer": "^3.7.0",
     "@types/d3": "^7.4.3",
-    "axios": "^1.7.8",
     "classnames": "^2.2.6",
     "d3": "^7.9.0",
     "esri-loader": "^3.1.0",
-    "helper-toolkit-ts": "^1.1.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   }

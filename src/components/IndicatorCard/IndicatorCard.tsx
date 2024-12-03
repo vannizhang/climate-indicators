@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { numberWithCommas } from 'helper-toolkit-ts/dist/number';
 import {
     BarLineCombined
   } from '../QuickD3Chart';
@@ -7,6 +6,7 @@ import { QuickD3ChartData, QuickD3ChartDataItem } from '../QuickD3Chart/types';
 import { BAR_COLOR, BAR_COLOR_CREATIVE_LAB } from '../../constants/style';
 import { IndicatorData } from '../../services/fetchIndicatorData';
 import classNames from 'classnames';
+import { numberWithCommas } from '../../utils/helpers';
 // import classnames from 'classnames'
 
 type Props = {
